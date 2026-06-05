@@ -338,6 +338,7 @@ async function logout(){
 async function loadAll(){
   const [chatRes,userRes]=await Promise.all([loadChats(),
     sb.from('profiles').select('id,username,name,avatar,avatar_url').neq('id',me.id)]);
+  console.log('profiles:', userRes);
   chats=chatRes;
   allUsers=userRes.data||[];
   renderChats();
